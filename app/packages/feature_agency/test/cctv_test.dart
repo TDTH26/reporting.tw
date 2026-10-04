@@ -24,8 +24,9 @@ void main() {
           'position': {'lat': 24.85, 'lon': 120.92},
           'bearing_deg': 90,
           'fov_deg': 60,
-          'domains': ['aerial', 'maritime'],
+          'domains': ['aerial', 'surface'],
           'active': true,
+          'open_cases': 1,
         },
       ],
       'GET /v1/agency/video-feeds/0AXD/tracks': (_) => {
@@ -88,6 +89,7 @@ void main() {
 
     expect(find.text('CCTV camera tracks'), findsOneWidget);
     expect(find.text('Yilan Coast (0AXD)'), findsOneWidget);
+    expect(find.text('1 open case · CGA · Aerial · Surface'), findsOneWidget); // camera marked as needing attention
     expect(find.byKey(const Key('cctv-track-0AXD-T3')), findsOneWidget);
     expect(find.byKey(const Key('cctv-track-0AXD-T2')), findsOneWidget);
     // The track with the most frames is shown first, with its behaviours and the case it created.

@@ -3380,6 +3380,12 @@ abstract class AgencyL10n {
   /// In en, this message translates to:
   /// **'Watch area'**
   String get cctvBehZone;
+
+  /// No description provided for @cctvOpenCases.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 open case} other{{count} open cases}}'**
+  String cctvOpenCases(int count);
 }
 
 class _AgencyL10nDelegate extends LocalizationsDelegate<AgencyL10n> {

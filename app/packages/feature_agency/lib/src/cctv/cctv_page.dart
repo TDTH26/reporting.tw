@@ -82,9 +82,17 @@ class _CctvPageState extends ConsumerState<CctvPage> {
         ListTile(
           key: Key('cctv-feed-${f.id}'),
           selected: f.id == feed.id,
-          leading: Icon(Icons.videocam_outlined, color: f.active ? null : UavrColors.redacted),
-          title: Text(cameraLabel(f)),
+          // Red while a case from this camera is still open.
+          tileColor: f.openCases > 0 ? UavrColors.critical.withValues(alpha: 0.1) : null,
+          selectedTileColor: f.openCases > 0 ? UavrColors.critical.withValues(alpha: 0.18) : null,
+          iconColor: f.openCases > 0 ? UavrColors.critical : null,
+          textColor: f.openCases > 0 ? UavrColors.critical : null,
+          selectedColor: f.openCases > 0 ? UavrColors.critical : null,
+          leading: Icon(f.openCases > 0 ? Icons.videocam : Icons.videocam_outlined,
+              color: f.active || f.openCases > 0 ? null : UavrColors.redacted),
+          title: Text(cameraLabel(f), style: f.openCases > 0 ? const TextStyle(fontWeight: FontWeight.w700) : null),
           subtitle: Text([
+            if (f.openCases > 0) l.cctvOpenCases(f.openCases),
             if (f.owner != null) f.owner!,
             for (final d in f.domains) domainLabel(l, d),
             if (!f.active) l.cctvInactive,
@@ -118,9 +126,19 @@ class _CctvPageState extends ConsumerState<CctvPage> {
                   DropdownMenuItem(
                     value: f.id,
                     child: Row(children: [
-                      Icon(Icons.videocam_outlined, size: 20, color: f.active ? null : UavrColors.redacted),
+                      Icon(f.openCases > 0 ? Icons.videocam : Icons.videocam_outlined,
+                          size: 20,
+                          color: f.openCases > 0 ? UavrColors.critical : (f.active ? null : UavrColors.redacted)),
                       const SizedBox(width: 8),
-                      Expanded(child: Text(cameraLabel(f), overflow: TextOverflow.ellipsis)),
+                      Expanded(
+                        child: Text(
+                          f.openCases > 0 ? '${cameraLabel(f)} · ${l.cctvOpenCases(f.openCases)}' : cameraLabel(f),
+                          overflow: TextOverflow.ellipsis,
+                          style: f.openCases > 0
+                              ? const TextStyle(color: UavrColors.critical, fontWeight: FontWeight.w700)
+                              : null,
+                        ),
+                      ),
                     ]),
                   ),
               ],

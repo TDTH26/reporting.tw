@@ -703,5 +703,7 @@
   "cctvBehLoiter": "Loitering",
   "cctvBehApproaching": "Approaching",
   "cctvBehFast": "Fast",
-  "cctvBehZone": "Watch area"
+  "cctvBehZone": "Watch area",
+  "cctvOpenCases": "{count, plural, =1{1 open case} other{{count} open cases}}",
+  "@cctvOpenCases": {"placeholders": {"count": {"type": "int"}}}
 }

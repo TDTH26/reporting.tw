@@ -1733,6 +1733,11 @@ class AgencyL10nZh extends AgencyL10n {
 
   @override
   String get cctvBehZone => '警戒區';
+
+  @override
+  String cctvOpenCases(int count) {
+    return '$count 件未結案件';
+  }
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -3464,4 +3469,9 @@ class AgencyL10nZhTw extends AgencyL10nZh {
 
   @override
   String get cctvBehZone => '警戒區';
+
+  @override
+  String cctvOpenCases(int count) {
+    return '$count 件未結案件';
+  }
 }

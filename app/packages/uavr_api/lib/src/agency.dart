@@ -593,6 +593,7 @@ class VideoFeedInfo {
     this.fovDeg,
     this.lastSampledAt,
     this.lastError,
+    this.openCases = 0,
   });
   final String id, name;
   final String? owner, lastError;
@@ -601,6 +602,9 @@ class VideoFeedInfo {
   final List<String> domains;
   final bool active;
   final DateTime? lastSampledAt;
+
+  /// Open cases fed by this camera's tracks: it needs attention until they are resolved.
+  final int openCases;
 
   factory VideoFeedInfo.fromJson(Json j) => VideoFeedInfo(
     id: '${j['id']}',
@@ -613,6 +617,7 @@ class VideoFeedInfo {
     active: j['active'] == true,
     lastSampledAt: parseDate(j['last_sampled_at']),
     lastError: j['last_error'] as String?,
+    openCases: (j['open_cases'] as num?)?.toInt() ?? 0,
   );
 }
 

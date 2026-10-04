@@ -546,5 +546,6 @@
   "cctvBehLoiter": "滯留",
   "cctvBehApproaching": "接近中",
   "cctvBehFast": "快速移動",
-  "cctvBehZone": "警戒區"
+  "cctvBehZone": "警戒區",
+  "cctvOpenCases": "{count} 件未結案件"
 }

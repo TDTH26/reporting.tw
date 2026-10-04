@@ -905,6 +905,18 @@ async def video_feeds(p: Principal = Depends(require(*READERS)), session: AsyncS
     rows = (
         await session.execute(select(VideoFeed).where(VideoFeed.classification <= p.clearance).order_by(VideoFeed.id))
     ).scalars()
+    # Open cases fed by a camera's current tracks (observation source_id "feed:<feed>:<track>"): the camera needs
+    # attention until they are resolved.
+    linked = (
+        await session.execute(
+            select(VideoTrack.feed_id, func.count(func.distinct(Case.id)))
+            .join(Observation, Observation.source_id == func.concat("feed:", VideoTrack.feed_id, ":", VideoTrack.key))
+            .join(Case, Case.incident_id == Observation.incident_id)
+            .where(Case.state.in_([s.value for s in OPEN_STATES]), Case.classification <= p.clearance)
+            .group_by(VideoTrack.feed_id)
+        )
+    ).all()
+    open_cases = dict(linked)
     return [
         {
             "id": f.id,
@@ -918,6 +930,7 @@ async def video_feeds(p: Principal = Depends(require(*READERS)), session: AsyncS
             "sample_interval_s": f.sample_interval_s,
             "last_sampled_at": f.last_sampled_at.isoformat() if f.last_sampled_at else None,
             "last_error": f.last_error,
+            "open_cases": open_cases.get(f.id, 0),
         }
         for f in rows
     ]

@@ -104,6 +104,8 @@ async def test_replayed_frames_build_one_track_with_behaviours(client, desks, st
     assert {"approaching", "zone"} <= codes
     assert t["last_frame_url"] and "/v1/media/frames/CAM-PIER/" in t["last_frame_url"]
     assert t["case"] and t["case"]["case_number"].startswith("UAV-")  # the case this track fed
+    feeds = (await client.get("/v1/agency/video-feeds", headers=staff(desks["NPA-CMD"]))).json()
+    assert {f["id"]: f["open_cases"] for f in feeds}["CAM-PIER"] == 1  # camera needs attention while the case is open
 
     async with sessionmaker()() as s:
         obs = (await s.execute(select(Observation).order_by(Observation.observed_at))).scalars().all()

@@ -1797,4 +1797,15 @@ class AgencyL10nEn extends AgencyL10n {
 
   @override
   String get cctvBehZone => 'Watch area';
+
+  @override
+  String cctvOpenCases(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count open cases',
+      one: '1 open case',
+    );
+    return '$_temp0';
+  }
 }
