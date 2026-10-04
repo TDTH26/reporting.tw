@@ -1,0 +1,19 @@
+{
+  "schema": "uavr.feed.remote-id/1",
+  "source_id": "rid-net-north",
+  "sent_at": "2026-10-02T08:00:05Z",
+  "messages": [
+    {
+      "receiver_id": "RX-TPE-07",
+      "t": "2026-10-02T08:00:01Z",
+      "transport": "wifi_beacon",
+      "uas_id": "1581F5FKD229400B",
+      "id_type": "serial",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "height_m": 95,
+      "operator_lat": 25.0312,
+      "operator_lon": 121.5631
+    }
+  ]
+}

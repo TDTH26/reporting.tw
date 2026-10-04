@@ -1,0 +1,13 @@
+{
+  "schema": "uavr.feed.adsb/1",
+  "source_id": "x",
+  "sent_at": "2026-10-02T08:00:05Z",
+  "states": [
+    {
+      "icao24": "ZZZ",
+      "t": "2026-10-02T08:00:04Z",
+      "lat": 95,
+      "lon": 121
+    }
+  ]
+}

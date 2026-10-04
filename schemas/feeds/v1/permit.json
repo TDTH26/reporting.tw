@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reporting.tw/schemas/feeds/v1/permit.json",
+  "title": "CAA flight permits",
+  "description": "Approved operations: which serials may fly where and when.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source_id",
+    "sent_at",
+    "permits"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uavr.feed.permit/1"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Stable id of the delivering system"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "permits": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "permit_no",
+          "serials",
+          "area",
+          "valid_from",
+          "valid_to"
+        ],
+        "properties": {
+          "permit_no": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "serials": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "maxLength": 64
+            }
+          },
+          "area": {
+            "type": "object",
+            "description": "GeoJSON Polygon or MultiPolygon (WGS84)",
+            "required": [
+              "type",
+              "coordinates"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "Polygon",
+                  "MultiPolygon"
+                ]
+              },
+              "coordinates": {
+                "type": "array"
+              }
+            }
+          },
+          "valid_from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valid_to": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "max_alt_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "operator_name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "approved",
+              "revoked"
+            ],
+            "default": "approved"
+          }
+        }
+      }
+    }
+  }
+}

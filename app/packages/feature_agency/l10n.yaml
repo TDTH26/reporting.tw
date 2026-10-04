@@ -1,0 +1,6 @@
+arb-dir: lib/l10n
+template-arb-file: agency_en.arb
+output-localization-file: agency_localizations.dart
+output-class: AgencyL10n
+output-dir: lib/src/l10n
+nullable-getter: false

@@ -1,0 +1,6 @@
+arb-dir: lib/l10n
+template-arb-file: informant_en.arb
+output-localization-file: informant_localizations.dart
+output-class: InformantL10n
+output-dir: lib/src/l10n
+nullable-getter: false

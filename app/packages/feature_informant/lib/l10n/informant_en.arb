@@ -1,0 +1,250 @@
+{
+  "@@locale": "en",
+  "skip": "Skip",
+  "notSure": "Not sure",
+  "onboardingLanguageTitle": "Choose your language",
+  "onboardingLanguageBody": "You can change this at any time in Settings.",
+  "onboardingWhatTitle": "Report suspicious drones, unmanned boats and other craft",
+  "onboardingWhatBody": "Seen a drone near an airport or military site, an unmanned boat off the coast, or a craft landing on a beach? Report it in under a minute. Your report goes straight to the agency responsible: police, civil aviation, Coast Guard or defense.",
+  "onboardingSafetyTitle": "Your safety comes first",
+  "onboardingSafetyApproach": "Never approach or follow the drone operator.",
+  "onboardingSafetyDistance": "Keep your distance from the drone and watch out for traffic around you.",
+  "onboardingSafetyDanger": "If anyone is in danger, call 110 first.",
+  "onboardingPrivacyTitle": "Anonymous by design",
+  "onboardingPrivacyNoAccount": "We never ask for your name, phone number or an account.",
+  "onboardingPrivacyCollected": "A report contains your location, the direction you point the phone, any photos, video or sound you add, and a random ID created when you installed the app.",
+  "onboardingPrivacyUse": "Reports are used only by Taiwan government authorities to deal with drone and maritime incidents.",
+  "onboardingPermissionsTitle": "Permissions",
+  "onboardingPermissionsBody": "Each permission makes your reports more useful. You can say no to any of them and still send reports.",
+  "onboardingStart": "Start",
+  "permLocationTitle": "Location",
+  "permLocationBody": "Puts your report on the map, so officers know where to look.",
+  "permCameraTitle": "Camera",
+  "permCameraBody": "Lets you aim at the drone and take photos or video.",
+  "permMicrophoneTitle": "Microphone",
+  "permMicrophoneBody": "Records the sound of the rotors, which helps identify the type of drone.",
+  "permNearbyTitle": "Nearby devices (Bluetooth and Wi-Fi)",
+  "permNearbyBody": "Picks up the drone's Remote ID broadcast: its serial number, position and sometimes the operator's position.",
+  "permNotificationsTitle": "Notifications",
+  "permNotificationsBody": "Tells you when your case is updated. Notifications never contain case details.",
+  "permAllow": "Allow",
+  "permGranted": "Allowed",
+  "permOpenSettings": "Open settings",
+  "homeReportButton": "Report a sighting",
+  "homeReportHint": "Takes less than a minute. No sign-up needed.",
+  "homeMyReports": "My reports",
+  "homeNoReports": "You haven't sent any reports from this device yet.",
+  "homeZonesMap": "No-fly zones map",
+  "homeSettings": "Settings",
+  "homeWebBanner": "For live sightings, the Android app sends more accurate reports: it measures the direction to the drone and picks up its Remote ID broadcast.",
+  "homeGetAndroidApp": "Get the Android app",
+  "homeEvidenceRequested": "Evidence requested",
+  "homePendingSend": "Waiting to send",
+  "homeStatusOffline": "Last known status",
+  "caseNumberLabel": "Case number",
+  "reportTitle": "Report a sighting",
+  "stepAim": "Aim",
+  "stepDetails": "Details",
+  "stepEvidence": "Evidence",
+  "locationWaiting": "Finding your location…",
+  "locationAccuracy": "Location ±{meters} m",
+  "@locationAccuracy": {
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "locationUnavailable": "Location is off or not allowed. Turn it on, or set your position on the map.",
+  "locationPickOnMap": "Set on map",
+  "locationManual": "Location set on the map",
+  "mapPickTitle": "Tap where you are",
+  "mapPickConfirm": "Use this location",
+  "remoteIdTitle": "Remote ID",
+  "remoteIdReceives": "Listening on: {transports}",
+  "@remoteIdReceives": {
+    "placeholders": {
+      "transports": {
+        "type": "String"
+      }
+    }
+  },
+  "remoteIdCount": "{count, plural, =0{No drone broadcasting Remote ID nearby yet} =1{1 drone broadcasting Remote ID} other{{count} drones broadcasting Remote ID}}",
+  "@remoteIdCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "remoteIdUnsupported": "This phone can't receive Remote ID broadcasts.",
+  "remoteIdPermission": "Allow \"Nearby devices\" so the app can pick up Remote ID.",
+  "remoteIdUnknownSerial": "Serial number not received",
+  "remoteIdDistance": "{meters} m away",
+  "@remoteIdDistance": {
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "remoteIdHeight": "{meters} m high",
+  "@remoteIdHeight": {
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "transportBt4": "Bluetooth",
+  "transportBt5": "Bluetooth long range",
+  "transportWifiBeacon": "Wi-Fi beacon",
+  "transportWifiNan": "Wi-Fi Aware",
+  "aimInstruction": "Point the phone at the drone or vessel and tap \"Lock direction\".",
+  "aimBearing": "Direction",
+  "aimElevation": "Angle up",
+  "aimCalibrate": "The compass needs calibrating: move the phone in a figure 8 a few times.",
+  "aimNoCompass": "No compass reading on this device. You can skip this step.",
+  "aimNoCamera": "Camera not available",
+  "aimLock": "Lock direction",
+  "aimTakePhoto": "Also take a photo",
+  "aimSkip": "Skip aiming",
+  "aimLocked": "Direction locked: {bearing}°, {elevation}° up",
+  "@aimLocked": {
+    "placeholders": {
+      "bearing": {
+        "type": "int"
+      },
+      "elevation": {
+        "type": "int"
+      }
+    }
+  },
+  "aimAgain": "Aim again",
+  "detailsTitle": "What did you see?",
+  "detailsOptional": "Everything here is optional. Skip it if you're in a hurry.",
+  "detailsHeight": "How high was it?",
+  "detailsHeightHint": "A 10-storey building is about 30 m tall.",
+  "heightBelow30": "Below 30 m",
+  "height30to60": "30–60 m",
+  "height60to120": "60–120 m",
+  "heightAbove120": "Above 120 m",
+  "detailsMovement": "Was it moving?",
+  "movementHovering": "Hovering",
+  "movementMoving": "Moving",
+  "detailsCount": "How many drones?",
+  "countOne": "1",
+  "countTwo": "2",
+  "countThreePlus": "3 or more",
+  "detailsDescription": "Anything else? (optional)",
+  "detailsDescriptionHint": "For example: flying over the school yard, red lights, loud buzzing",
+  "evidenceTitle": "Photos, video and sound",
+  "evidenceSpeedNote": "Sending quickly matters more than perfect evidence. You can send now; files upload in the background.",
+  "mediaPhoto": "Photo",
+  "mediaVideo": "Video",
+  "mediaAudio": "Sound recording",
+  "evidenceRecordSound": "Record sound",
+  "evidenceStopRecording": "Stop recording",
+  "evidenceRecording": "Recording rotor sound… {seconds} s",
+  "@evidenceRecording": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "evidenceNone": "No files added yet.",
+  "evidenceRemove": "Remove file",
+  "evidenceAimPhoto": "Photo taken when locking direction",
+  "evidenceCaptureFailed": "Couldn't capture the file. Please try again.",
+  "sendNow": "Send report now",
+  "sending": "Sending…",
+  "sendQueuedTitle": "Report saved",
+  "sendQueuedBody": "There's no connection right now. Your report is saved on this phone and will be sent automatically as soon as you're back online.",
+  "sendRateLimited": "Too many reports have been sent from this device or network recently. Please wait a few minutes and try again. If anyone is in danger, call 110.",
+  "sendRejected": "The report could not be accepted: {message}",
+  "@sendRejected": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "sendFailedTitle": "Report not sent",
+  "discardTitle": "Discard this report?",
+  "discardBody": "Nothing has been sent yet.",
+  "discard": "Discard",
+  "sentTitle": "Report sent",
+  "sentBody": "Thank you. Your report has been passed to the responsible agency.",
+  "sentUploading": "Uploading files: {done} of {total}",
+  "@sentUploading": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "sentUploadsDone": "All files uploaded.",
+  "sentUploadsBackground": "Uploads continue in the background, even if you close the app.",
+  "sentUploadsKeepOpen": "Keep this page open until the files have finished uploading.",
+  "sentKeyNote": "Only this phone holds the private key for following this report. If you uninstall the app or clear its data, you will no longer see updates.",
+  "sentKeyNoteWeb": "Only this browser holds the private key for following this report. If you clear your browser data, you will no longer see updates.",
+  "sentAndroidHint": "Next time, the Android app can measure the drone's direction and pick up its Remote ID, which makes your report more useful.",
+  "sentViewStatus": "View status",
+  "sentBackHome": "Back to home",
+  "caseTitle": "Case {caseNumber}",
+  "@caseTitle": {
+    "placeholders": {
+      "caseNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "caseProgress": "Progress",
+  "caseOutcome": "Outcome",
+  "caseEvidenceRequests": "Requests for more evidence",
+  "caseEvidenceSafety": "Only send what you can capture safely from where you are.",
+  "caseEvidenceAnswered": "Answered — thank you.",
+  "caseEvidenceSend": "{count, plural, =1{Send 1 file} other{Send {count} files}}",
+  "@caseEvidenceSend": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "caseEvidenceSent": "Thank you. Your files are uploading.",
+  "caseEvidenceClosed": "This request is no longer open.",
+  "caseNotOnDevice": "This report is not stored on this device.",
+  "caseUpdated": "Updated {time}",
+  "@caseUpdated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "zonesTitle": "No-fly zones",
+  "zonesLegend": "Legend",
+  "zonesMyLocation": "My location",
+  "zonesNote": "Shows published CAA drone zones only. Some restricted areas are not shown on public maps.",
+  "settingsTitle": "Settings",
+  "settingsPrivacy": "Privacy and about",
+  "settingsPrivacyBody": "reporting.tw is a Taiwan government service for reporting suspicious drones, unmanned boats and other questionable craft in the air, at sea or on the coast. Reports are anonymous: we never ask for your name, phone number or an account. A report contains your location, the direction you pointed the phone, your answers to the questions, any photos, video or sound you add, Remote ID broadcasts your phone picked up, and a random ID created when the app was installed. Photos may be analysed automatically by an AI model to help officers assess the report. This information is used only by Taiwan authorities to deal with these incidents.",
+  "settingsClearHistory": "Clear report history",
+  "settingsClearHistoryBody": "This removes your reports and their private follow-up keys from this device. You will no longer see updates or be able to answer requests for these reports. Reports already sent are not withdrawn.",
+  "settingsClear": "Clear",
+  "settingsHistoryCleared": "Report history cleared.",
+  "settingsShowIntro": "Show the introduction again",
+  "settingsVersion": "Version {version}",
+  "@settingsVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  }
+}

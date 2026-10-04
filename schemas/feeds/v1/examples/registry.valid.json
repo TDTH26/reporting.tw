@@ -1,0 +1,20 @@
+{
+  "schema": "uavr.feed.registry/1",
+  "source_id": "caa-registry",
+  "sent_at": "2026-10-02T08:00:00Z",
+  "records": [
+    {
+      "serial": "1581F5FKD229400B",
+      "registration_no": "TW-UAV-0012345",
+      "owner": {
+        "name": "王大明",
+        "owner_ref": "CAA-OWN-88812",
+        "kind": "person"
+      },
+      "model": "Mavic 3",
+      "manufacturer": "DJI",
+      "mtow_g": 895,
+      "status": "active"
+    }
+  ]
+}

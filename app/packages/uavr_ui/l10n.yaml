@@ -1,0 +1,6 @@
+arb-dir: lib/l10n
+template-arb-file: uavr_en.arb
+output-localization-file: uavr_localizations.dart
+output-class: UavrL10n
+output-dir: lib/src/l10n
+nullable-getter: false

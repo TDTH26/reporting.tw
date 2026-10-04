@@ -1,0 +1,6 @@
+arb-dir: lib/l10n
+template-arb-file: field_en.arb
+output-localization-file: field_localizations.dart
+output-class: FieldL10n
+output-dir: lib/src/l10n
+nullable-getter: false

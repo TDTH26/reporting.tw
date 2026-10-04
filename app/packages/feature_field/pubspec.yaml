@@ -1,0 +1,38 @@
+name: feature_field
+description: Field officer app screens (Android, MDM-managed).
+publish_to: none
+version: 1.0.0
+resolution: workspace
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.41.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  uavr_api:
+  uavr_core:
+  uavr_ui:
+  uavr_maps:
+  uavr_capture:
+  uavr_native:
+  flutter_riverpod: ^3.0.0
+  go_router: ^17.0.0
+  geolocator: ^14.0.0
+  permission_handler: ^13.0.0
+  path_provider: ^2.0.0
+  uuid: ^4.0.0
+  latlong2: ^0.9.1
+  flutter_map: ^8.0.0
+  intl: any
+  cross_file: any
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  http: any
+
+flutter:
+  generate: true

@@ -1,0 +1,16 @@
+{
+  "schema": "uavr.feed.ais/1",
+  "source_id": "mda-sample",
+  "sent_at": "2026-04-02T09:40:00Z",
+  "vessels": [
+    {
+      "source_kind": "mda",
+      "track_id": "MDA-24-126.164",
+      "role": "mobile_asset",
+      "role_confidence": "high",
+      "t": "2026-04-02T09:33:18Z",
+      "lat": 36.0065,
+      "lon": 123.312083
+    }
+  ]
+}

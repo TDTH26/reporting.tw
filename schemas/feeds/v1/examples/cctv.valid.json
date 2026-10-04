@@ -1,0 +1,15 @@
+{
+  "schema": "uavr.feed.cctv/1",
+  "source_id": "tpe-city-cctv",
+  "sent_at": "2026-10-02T08:00:00Z",
+  "cameras": [
+    {
+      "camera_id": "TPE-XY-0042",
+      "name": "信義路五段 / 松智路口",
+      "lat": 25.0332,
+      "lon": 121.566,
+      "stream_url": "https://cctv.example.gov.tw/live/TPE-XY-0042.m3u8",
+      "owner": "臺北市政府警察局"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reporting.tw/schemas/feeds/v1/remote-id.json",
+  "title": "Fixed / network Remote ID receivers",
+  "description": "Decoded ASTM F3411 messages from fixed receivers or a network Remote ID service.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source_id",
+    "sent_at",
+    "messages"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uavr.feed.remote-id/1"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Stable id of the delivering system"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "messages": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "receiver_id",
+          "t",
+          "uas_id"
+        ],
+        "properties": {
+          "receiver_id": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "t": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "enum": [
+              "bt4",
+              "bt5",
+              "wifi_beacon",
+              "wifi_nan",
+              "network"
+            ]
+          },
+          "uas_id": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "id_type": {
+            "enum": [
+              "none",
+              "serial",
+              "caa_registration",
+              "utm_assigned",
+              "specific_session"
+            ]
+          },
+          "ua_type": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "lat": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "lon": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "alt_geo_m": {
+            "type": "number"
+          },
+          "height_m": {
+            "type": "number"
+          },
+          "speed_mps": {
+            "type": "number"
+          },
+          "direction_deg": {
+            "type": "number"
+          },
+          "operator_lat": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "operator_lon": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "operator_id": {
+            "type": "string",
+            "maxLength": 64
+          }
+        }
+      }
+    }
+  }
+}

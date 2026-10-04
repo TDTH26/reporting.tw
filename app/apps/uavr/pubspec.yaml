@@ -1,0 +1,25 @@
+name: uavr
+description: "reporting.tw: three builds (informant, agency console, field) from one codebase."
+publish_to: none
+version: 1.0.1+7
+resolution: workspace
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  feature_informant:
+  feature_agency:
+  feature_field:
+  uavr_core:
+  uavr_capture:
+  flutter_riverpod: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

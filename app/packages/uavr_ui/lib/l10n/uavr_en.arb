@@ -1,0 +1,55 @@
+{
+  "@@locale": "en",
+  "appName": "Suspicious Craft Report",
+  "demoDisclaimer": "Demo for the “Taiwan Defense Tech Hackathon 2026”. Not an official government service.",
+  "@demoDisclaimer": {"description": "Red banner: this deployment is a hackathon demo."},
+  "ok": "OK",
+  "cancel": "Cancel",
+  "retry": "Try again",
+  "close": "Close",
+  "back": "Back",
+  "next": "Next",
+  "done": "Done",
+  "save": "Save",
+  "send": "Send",
+  "loading": "Loading…",
+  "errorGeneric": "Something went wrong.",
+  "errorNetwork": "No connection to the server.",
+  "offline": "You are offline",
+  "severityCritical": "Critical",
+  "severityMedium": "Medium",
+  "severityLow": "Low",
+  "statusReceived": "Received",
+  "statusInReview": "Under review",
+  "statusInProgress": "Being handled",
+  "statusCompleted": "Completed",
+  "zoneAirport": "Airport",
+  "zoneRed": "No-fly zone (red)",
+  "zoneYellow": "Restricted zone (yellow)",
+  "zoneMilitary": "Military area",
+  "zoneCriticalInfrastructure": "Critical infrastructure",
+  "zoneOutlyingStrict": "Outlying island restricted area",
+  "zoneResidential": "Residential area",
+  "zoneOpen": "Open area",
+  "zoneJurisdiction": "Jurisdiction",
+  "languageLabel": "Language",
+  "languageSelfName": "English",
+  "justNow": "just now",
+  "emergency110": "If anyone is in danger, call 110 now.",
+  "minutesAgo": "{count, plural, =1{1 minute ago} other{{count} minutes ago}}",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+name: uavr_ui
+description: Design system and localizations (zh-TW, en, vi, id, th, fil) shared by all builds.
+publish_to: none
+version: 1.0.0
+resolution: workspace
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.41.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true
+  fonts:
+    # Bundled so the console works on government networks without Google Fonts.
+    # TODO(release): subset NotoSansTC to Big5 + common glyphs to cut ~8 MB from the APKs.
+    - family: NotoSansTC
+      fonts:
+        - asset: fonts/NotoSansTC.ttf
+    - family: NotoSans
+      fonts:
+        - asset: fonts/NotoSans.ttf
+    - family: NotoSansThai
+      fonts:
+        - asset: fonts/NotoSansThai.ttf

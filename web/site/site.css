@@ -1,0 +1,83 @@
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --text: #16202b; --muted: #556270; --brand: #1b4f9c; --brand-text: #ffffff;
+  --border: #dde2e8; --alert-bg: #fdecec; --alert: #b3261e;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419; --surface: #18202a; --text: #e6ebf0; --muted: #9aa7b4; --brand: #7aa7ec; --brand-text: #0b1a30;
+    --border: #2a3542; --alert-bg: #3a1a1a; --alert: #ff8a80; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419; --surface: #18202a; --text: #e6ebf0; --muted: #9aa7b4; --brand: #7aa7ec; --brand-text: #0b1a30;
+  --border: #2a3542; --alert-bg: #3a1a1a; --alert: #ff8a80; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text); line-height: 1.6;
+  /* Latin fonts first: CJK fonts draw ’ “ ” as full-width glyphs, which leaves gaps in Latin text. */
+  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", "Noto Sans Thai", sans-serif;
+}
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px;
+  max-width: 1040px; margin: 0 auto; }
+.brand { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+.logo { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--brand); color: var(--brand-text); margin-right: 6px; }
+select { font: inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); max-width: 46vw; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+main { max-width: 1040px; margin: 0 auto; padding: 0 16px 48px; }
+.hero { padding: 32px 0 16px; }
+h1 { font-size: clamp(1.6rem, 4.5vw, 2.6rem); line-height: 1.25; margin: 0 0 12px; }
+h2 { font-size: 1.2rem; margin: 0 0 8px; }
+h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.sub { color: var(--muted); font-size: 1.1rem; margin: 0 0 24px; }
+.ctas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.cta { display: block; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+.cta small { display: block; font-weight: 400; font-size: .9rem; color: var(--muted); margin-top: 4px; }
+.cta { transition: background-color .15s, border-color .15s, box-shadow .15s, transform .15s; }
+.cta:hover, .cta:focus-visible { border-color: var(--brand); background: color-mix(in srgb, var(--brand) 10%, var(--surface));
+  box-shadow: 0 6px 18px rgba(0,0,0,.12); transform: translateY(-2px); }
+.cta.primary { background: var(--brand); color: var(--brand-text); border-color: var(--brand); }
+.cta.primary small { color: inherit; opacity: .85; }
+.cta.primary:hover, .cta.primary:focus-visible { background: color-mix(in srgb, var(--brand) 80%, #000); }
+.cta.muted { opacity: .5; filter: grayscale(1); }
+.cta.muted:hover, .cta.muted:focus-visible { opacity: .75; }
+.alert { margin: 20px 0 0; padding: 12px 14px; border-radius: 10px; background: var(--alert-bg); color: var(--text); }
+.alert strong { color: var(--alert); margin-right: 6px; }
+section { margin-top: 32px; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px; counter-reset: s; }
+.steps li { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; counter-increment: s; }
+.steps li::before { content: counter(s); display: inline-grid; place-items: center; width: 28px; height: 28px;
+  border-radius: 50%; background: var(--brand); color: var(--brand-text); font-weight: 700; margin-bottom: 8px; }
+.steps p, .cards p { margin: 0; color: var(--muted); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.cards article { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+footer { text-align: center; color: var(--muted); padding: 24px 16px 40px; }
+footer a { color: var(--brand); }
+
+/* Hackathon demo disclaimer: always solid red, both themes. */
+.demo { margin: 0; padding: 10px 16px; background: #c62828; color: #fff; font-weight: 700; text-align: center; }
+.more { margin: 16px 0 0; font-weight: 700; }
+.more a, .back { color: var(--brand); }
+.back { text-decoration: none; }
+
+/* Header tools: language picker and light/dark switch. */
+.tools { display: flex; align-items: center; gap: 8px; }
+.theme { display: inline-grid; place-items: center; width: 38px; height: 38px; padding: 0; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; flex: none; }
+.theme:hover { border-color: var(--brand); }
+.theme:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.theme svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme .moon { fill: currentColor; stroke: none; }
+/* Show the moon in light mode (switch to dark) and the sun in dark mode. */
+.theme .sun { display: none; }
+:root[data-theme="dark"] .theme .sun { display: block; }
+:root[data-theme="dark"] .theme .moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme .sun { display: block; }
+  :root:not([data-theme="light"]) .theme .moon { display: none; }
+}

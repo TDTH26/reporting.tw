@@ -1,0 +1,24 @@
+{
+  "schema": "uavr.feed.video-feed/1",
+  "source_id": "cga-cameras",
+  "sent_at": "2026-10-02T08:00:00Z",
+  "feeds": [
+    {
+      "feed_id": "CGA-KM-CAM-01",
+      "name": "金門料羅灣海岸監視",
+      "owner": "海巡署金馬澎分署",
+      "lat": 24.408,
+      "lon": 118.43,
+      "bearing_deg": 160,
+      "fov_deg": 60,
+      "snapshot_url": "https://cam.example.gov.tw/km01.jpg",
+      "stream_url": "https://cam.example.gov.tw/km01.m3u8",
+      "domains": [
+        "surface",
+        "shore",
+        "aerial"
+      ],
+      "sample_interval_s": 120
+    }
+  ]
+}

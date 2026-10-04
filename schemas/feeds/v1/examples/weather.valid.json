@@ -1,0 +1,16 @@
+{
+  "schema": "uavr.feed.weather/1",
+  "source_id": "cwa-obs",
+  "sent_at": "2026-10-02T08:00:00Z",
+  "observations": [
+    {
+      "station_id": "466920",
+      "t": "2026-10-02T07:50:00Z",
+      "lat": 25.0377,
+      "lon": 121.5149,
+      "visibility_m": 9000,
+      "wind_speed_mps": 3.4,
+      "wind_dir_deg": 60
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "uavr.feed.ais/1",
+  "source_id": "cga-ais",
+  "sent_at": "2026-10-02T08:00:05Z",
+  "vessels": [
+    {
+      "mmsi": "416123456",
+      "name": "HAI AN 8",
+      "callsign": "BR3456",
+      "ship_type": 30,
+      "flag": "TW",
+      "length_m": 24,
+      "t": "2026-10-02T08:00:00Z",
+      "lat": 24.43,
+      "lon": 118.42,
+      "sog_kn": 6.5,
+      "cog_deg": 90,
+      "nav_status": 7
+    }
+  ]
+}

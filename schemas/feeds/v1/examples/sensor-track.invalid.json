@@ -1,0 +1,13 @@
+{
+  "schema": "uavr.feed.sensor-track/1",
+  "source_id": "vendor-a",
+  "sent_at": "2026-10-02T08:00:05Z",
+  "tracks": [
+    {
+      "sensor_id": "X",
+      "sensor_kind": "lidar",
+      "track_id": "T",
+      "points": []
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.env
+deploy/tiles/*.mbtiles
+node_modules/
+# Flutter
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec_overrides.yaml
+*.iml
+.idea/
+local.properties
+dist/
+
+*:Zone.Identifier
+/data/
+
+# Hackathon brief, onboarding guide and photos (not part of the product)
+hackathon/
+
+# Demo video is deployed by hand, not tracked
+web/site/demovideo/*.mp4
+# Android APK for direct download is deployed by hand, not tracked
+web/site/download/*.apk
+
+# Secrets: never commit, wherever they end up
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+key.properties
+google-services.json
+.env.*
+!.env.example
+reporting.env
+creds.json
+credentials*.md
+.chrome-profile/
+
+# Build outputs and media that belong elsewhere
+*.apk
+*.aab
+*.mp4
+
+# Third-party document (EDTH); a copy lives in hackathon/
+docs/Hacker Onboarding*.pdf

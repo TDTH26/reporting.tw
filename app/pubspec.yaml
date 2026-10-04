@@ -1,0 +1,39 @@
+name: uavr_workspace
+publish_to: none
+environment:
+  sdk: ^3.11.0
+
+workspace:
+  - apps/uavr
+  - packages/uavr_api
+  - packages/uavr_core
+  - packages/uavr_ui
+  - packages/uavr_maps
+  - packages/uavr_capture
+  - packages/uavr_native
+  - packages/feature_informant
+  - packages/feature_agency
+  - packages/feature_field
+
+dev_dependencies:
+  melos: ^8.9.0
+
+melos:
+  name: uavr
+  scripts:
+    analyze:
+      run: dart run melos exec -- flutter analyze --no-fatal-infos
+      description: Static analysis for every package
+    test:
+      run: dart run melos exec --dir-exists=test -- flutter test
+      description: Run tests in every package that has them
+    gen-l10n:
+      run: cd packages/uavr_ui && flutter gen-l10n
+      description: Regenerate localizations from the ARB files
+    check-api:
+      run: dart run tool/check_api.dart ../backend/openapi.json
+      description: Check that every endpoint the Dart client calls exists in the OpenAPI spec
+
+# permission_handler_android 14.x's Gradle script needs AGP 9; the app is on AGP 8.11.
+dependency_overrides:
+  permission_handler_android: ^13.0.0

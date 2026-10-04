@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo Video · reporting.tw</title>
+<meta name="description" content="Demo video of Reporting.tw for the Taiwan Defense Tech Hackathon 2026: suspicious drones and vessels, from a report to a decision.">
+<link rel="stylesheet" href="../site.css?v=202610040900">
+<script src="../theme.js?v=202610031731"></script>
+<style>
+  .watch { max-width: 1100px; }
+  .player { margin-top: 24px; position: relative; border-radius: 14px; overflow: hidden; background: #000; box-shadow: 0 12px 40px rgba(0,0,0,.25); }
+  .player video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #000; }
+  .lead { font-size: 1.1rem; margin: 18px 0 6px; }
+  .meta { color: var(--muted); margin: 0 0 22px; font-size: .95rem; }
+  .chapters { list-style: none; padding: 0; margin: 0 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .chapters button { all: unset; box-sizing: border-box; cursor: pointer; display: flex; gap: 12px; width: 100%; height: 100%;
+    padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); line-height: 1.4; font-size: .92rem; }
+  .chapters button b { color: var(--text); }
+  .chapters button:hover, .chapters button:focus-visible { border-color: var(--brand); }
+  .chapters button.on { border-color: var(--brand); box-shadow: inset 4px 0 0 var(--brand); }
+  .tc { flex: none; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--brand); min-width: 2.6em; }
+  .try { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 18px; }
+  .try a { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--brand); background: var(--brand); color: var(--brand-text); text-decoration: none; font-weight: 600; }
+  .try a { transition: background-color .15s, border-color .15s; }
+  .try a:hover, .try a:focus-visible { background: color-mix(in srgb, var(--brand) 75%, #000); border-color: color-mix(in srgb, var(--brand) 75%, #000); }
+  .soon { padding: 48px 24px; text-align: center; color: #c9d6e3; }
+  .credit { color: var(--muted); font-size: .92rem; }
+</style>
+</head>
+<body>
+<header class="bar"><a class="brand" href="/"><span aria-hidden="true">←</span> Return to homepage</a>
+  <div class="tools"><button id="theme" class="theme" type="button" aria-label="Switch to dark mode"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg></button></div>
+</header>
+<main class="watch">
+<div class="player">
+  <video id="v" controls preload="metadata" playsinline poster="poster.jpg"></video>
+  <p id="soon" class="soon" hidden>The demo video could not be loaded. Please try again in a moment.</p>
+</div>
+<p class="lead">Monitoring suspicious aerial and water activities: an Informant's drone report, the agency console,
+maritime alerts with Atreides sensor data, and camera tracking.</p>
+<p class="meta">2:16 · captions in English and 繁體中文</p>
+<ol class="chapters">
+  <li><button type="button" data-t="0"><span class="tc">0:00</span><span><b>Start</b><br>Reporting.tw, the two hackathon challenges</span></button></li>
+  <li><button type="button" data-t="6"><span class="tc">0:06</span><span><b>1 · The Informant</b><br>A drone at the coast: aim the phone, a few taps, case number at once</span></button></li>
+  <li><button type="button" data-t="32"><span class="tc">0:32</span><span><b>2 · MND desk</b><br>Position from the Informant's direction, Critical over a military zone</span></button></li>
+  <li><button type="button" data-t="59"><span class="tc">0:59</span><span><b>3 · People decide</b><br>Recommendations to accept or reject, the officer resolves the case</span></button></li>
+  <li><button type="button" data-t="83"><span class="tc">1:23</span><span><b>4 · Maritime</b><br>Rules and a statistical baseline: risk score with reasons</span></button></li>
+  <li><button type="button" data-t="109"><span class="tc">1:49</span><span><b>5 · Atreides</b><br>MDA detections without identity, routes rebuilt from them</span></button></li>
+  <li><button type="button" data-t="118"><span class="tc">1:58</span><span><b>6 · Camera</b><br>Featherless AI finds the drone in each frame, one track, behaviour alerts</span></button></li>
+  <li><button type="button" data-t="131"><span class="tc">2:11</span><span><b>End</b><br>Try it on console.reporting.tw</span></button></li>
+</ol>
+<div class="try"><a href="/app/">Report a sighting</a><a href="https://console.reporting.tw">console.reporting.tw</a><a href="/guide.html">App guide</a></div>
+<p class="credit">Hackathon resources used: <strong>Atreides</strong> MDA sample data · <strong>Featherless AI</strong> image analysis</p>
+</main>
+<footer><a href="/">reporting.tw</a> · <a href="../guide.html">Guide</a> · <a href="../privacy.html">Privacy</a></footer>
+<script>
+  // To replace the video: copy the new file next to this page and change VIDEO. The site sends Cache-Control: no-cache,
+  // so browsers and Cloudflare revalidate the page and the file on every load.
+  const VIDEO = 'demo-video-20261004-0815-kokoro-heart-zh.mp4';
+  const v = document.getElementById('v');
+  v.src = VIDEO;
+  v.addEventListener('error', () => { v.hidden = true; document.getElementById('soon').hidden = false; });
+  const btns = [...document.querySelectorAll('.chapters button')];
+  btns.forEach(b => b.addEventListener('click', () => {
+    v.currentTime = +b.dataset.t; v.play(); v.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }));
+  v.addEventListener('timeupdate', () => {
+    let cur = btns[0];
+    for (const b of btns) if (v.currentTime >= +b.dataset.t) cur = b;
+    btns.forEach(b => b.classList.toggle('on', b === cur));
+  });
+</script>
+</body>
+</html>

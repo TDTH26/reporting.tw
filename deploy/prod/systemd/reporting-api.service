@@ -1,0 +1,22 @@
+[Unit]
+Description=reporting.tw API (FastAPI / uvicorn)
+After=network.target mysql.service
+Requires=mysql.service
+
+[Service]
+User=reportingtw
+Group=reportingtw
+WorkingDirectory=/sites/reporting.tw/src/backend
+EnvironmentFile=/sites/reporting.tw/reporting.env
+# Apply database migrations before every start (no-op when up to date).
+ExecStartPre=/sites/reporting.tw/src/backend/.venv/bin/alembic upgrade head
+ExecStart=/sites/reporting.tw/src/backend/.venv/bin/uvicorn uavr.main:app --host 127.0.0.1 --port 8100 --workers 2 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/sites/reporting.tw/data
+
+[Install]
+WantedBy=multi-user.target

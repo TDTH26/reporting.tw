@@ -1,0 +1,24 @@
+name: uavr_core
+description: Configuration, staff login, live WebSocket channel, informant token store.
+publish_to: none
+version: 1.0.0
+resolution: workspace
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.41.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  uavr_api:
+  flutter_riverpod: ^3.0.0
+  web_socket_channel: ^3.0.0
+  flutter_secure_storage: any
+  shared_preferences: ^2.0.0
+  uuid: ^4.0.0
+  http: ^1.0.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+

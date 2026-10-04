@@ -1,0 +1,37 @@
+{
+  "schema": "uavr.feed.sensor-track/1",
+  "source_id": "vendor-a-taoyuan",
+  "sent_at": "2026-10-02T08:00:05Z",
+  "tracks": [
+    {
+      "sensor_id": "TY-RF-01",
+      "sensor_kind": "rf",
+      "track_id": "T-1001",
+      "status": "active",
+      "points": [
+        {
+          "t": "2026-10-02T08:00:00Z",
+          "lat": 25.0797,
+          "lon": 121.2342,
+          "alt_m": 85,
+          "alt_ref": "agl",
+          "speed_mps": 6.2,
+          "heading_deg": 270
+        }
+      ],
+      "classification": {
+        "target_type": "multirotor",
+        "confidence": 0.92
+      },
+      "rf": {
+        "frequency_mhz": 2437,
+        "protocol": "OcuSync",
+        "serial": "1581F5FKD229400B",
+        "pilot_position": {
+          "lat": 25.0752,
+          "lon": 121.2401
+        }
+      }
+    }
+  ]
+}

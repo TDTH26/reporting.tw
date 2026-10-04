@@ -1,0 +1,284 @@
+{
+  "@@locale": "en",
+  "appTitle": "Suspicious Craft Report – Field",
+  "loginSubtitle": "Field officer app. Sign in with your agency account.",
+  "signIn": "Sign in",
+  "signInFailed": "Sign-in failed. Check your connection and try again.",
+  "signOut": "Sign out",
+  "signOutConfirm": "Sign out of the field app?",
+  "signOutPendingWarning": "{count, plural, =1{1 unsent observation will be deleted.} other{{count} unsent observations will be deleted.}} Sign out anyway?",
+  "@signOutPendingWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "mdmNote": "This device is managed by your agency. If it is lost or stolen, report it immediately: it will be wiped remotely (MDM).",
+  "noAccessTitle": "No field officer access",
+  "noAccessBody": "Your account does not have the field officer role. Contact your unit administrator.",
+  "assignmentsTitle": "My assignments",
+  "noAssignments": "No cases are assigned to you right now.",
+  "outboxTitle": "Outbox",
+  "outboxEmpty": "Everything has been sent.",
+  "outboxExplanation": "Observations saved on this device that have not reached the server yet. They are retried automatically when the connection returns.",
+  "retryNow": "Retry now",
+  "discard": "Delete",
+  "discardConfirm": "Delete this unsent observation? This cannot be undone.",
+  "attempts": "{count, plural, =1{1 attempt} other{{count} attempts}}",
+  "@attempts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "mediaCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@mediaCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rejected": "Rejected by server",
+  "offlineBanner": "Offline — last updated {when}",
+  "@offlineBanner": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "defenseFieldUnit": "Defense field unit",
+  "caseTitle": "Case",
+  "caseUnavailable": "This case is no longer assigned to you or is not available.",
+  "stateNew": "New",
+  "stateAcknowledged": "Acknowledged",
+  "stateInvestigating": "Investigating",
+  "stateResolved": "Resolved",
+  "stateClosed": "Closed",
+  "stateMerged": "Merged",
+  "authLikelyAuthorized": "Likely authorized",
+  "authNoPermit": "No permit",
+  "authUnknown": "Authorization unknown",
+  "sourceRemoteId": "Remote ID",
+  "sourceTriangulated": "Triangulated",
+  "sourceSensor": "Sensor",
+  "sourceInformant": "Informant estimate",
+  "compassPoints": "N|NE|E|SE|S|SW|W|NW",
+  "positionUnknown": "Position unknown",
+  "waitingForGps": "Waiting for GPS…",
+  "gpsAccuracy": "GPS ±{meters} m",
+  "@gpsAccuracy": {
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "lastSeen": "Last seen {when}",
+  "@lastSeen": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "redactedShort": "Restricted",
+  "redactedExplanation": "This is a classified defense case. Only defense field units can see its details; you see the location, time and severity only. Follow your dispatcher's instructions.",
+  "sensorConfirmed": "Sensor confirmed",
+  "operator": "Operator",
+  "me": "Me",
+  "fitMap": "Show all",
+  "toDrone": "Drone",
+  "toOperator": "Operator position",
+  "positionSharingOn": "Sharing my position with the dispatcher (tap to stop)",
+  "positionSharingOff": "Position sharing off (tap to share)",
+  "basicInfo": "Basic information",
+  "severity": "Severity",
+  "location": "Location",
+  "firstSeenLabel": "First seen",
+  "lastSeenLabel": "Last seen",
+  "remoteIdScan": "Remote ID scan",
+  "captureEvidence": "Capture evidence",
+  "incidentFacts": "Incident",
+  "positionSource": "Position from",
+  "estError": "Position error",
+  "estAltitude": "Estimated altitude",
+  "reports": "Observations",
+  "distinctInformants": "{count, plural, =1{1 informant} other{{count} informants}}",
+  "@distinctInformants": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authorization": "Authorization",
+  "zones": "Zones",
+  "none": "None",
+  "permit": "Permit",
+  "permitNo": "Permit no.",
+  "operatorName": "Operator",
+  "validity": "Valid",
+  "maxAltitude": "Max. altitude",
+  "remoteIdSerials": "Remote ID",
+  "registryMatch": "Registry match",
+  "noRemoteId": "No Remote ID received for this case.",
+  "registryLookup": "Registry",
+  "registryTitle": "Registry: {serial}",
+  "@registryTitle": {
+    "placeholders": {
+      "serial": {
+        "type": "String"
+      }
+    }
+  },
+  "registryFailed": "Registry lookup failed.",
+  "registered": "Registered",
+  "notRegistered": "Not registered",
+  "registrationNo": "Registration no.",
+  "owner": "Owner",
+  "model": "Model",
+  "mtow": "Max. take-off weight",
+  "registryStatus": "Status",
+  "permits": "Permits",
+  "adsbNearby": "Manned aircraft nearby (ADS-B)",
+  "weather": "Weather",
+  "weatherStation": "Station",
+  "visibility": "Visibility",
+  "wind": "Wind",
+  "observationsCount": "{count, plural, =1{1 observation} other{{count} observations}}",
+  "@observationsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "srcFieldOfficer": "Field officer",
+  "srcRemoteId": "Remote ID receiver",
+  "srcRfSensor": "RF sensor",
+  "srcMdaSensor": "Maritime sensor (MDA)",
+  "srcRadar": "Radar",
+  "srcInformant": "Public report",
+  "fieldOfficers": "Assigned officers",
+  "notes": "Notes",
+  "noteHint": "Add a note for the desk…",
+  "addNote": "Add note",
+  "noteAdded": "Note added.",
+  "noteFailed": "Could not add the note (offline?).",
+  "restartScan": "Restart scan",
+  "scanFor": "Drones received by this phone. Attach one to case {caseNumber} to add its Remote ID and position as on-scene evidence.",
+  "@scanFor": {
+    "placeholders": {
+      "caseNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "capBt4": "Bluetooth 4",
+  "capBt5": "Bluetooth 5 long range",
+  "capWifiBeacon": "Wi-Fi Beacon",
+  "capWifiNan": "Wi-Fi NAN",
+  "noRemoteIdHardware": "This device cannot receive Remote ID (no supported Bluetooth / Wi-Fi receiver).",
+  "scanPermissionError": "Remote ID scanning needs the Nearby devices (Bluetooth / Wi-Fi) and Location permissions. Grant them, or enable them in Settings.",
+  "scanPermissionPartial": "Some permissions are missing; only some transports are being scanned.",
+  "grantPermission": "Grant",
+  "openSettings": "Settings",
+  "scanError": "Scan error: {error}",
+  "@scanError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "scanningNoDrones": "Scanning… no Remote ID broadcasts received yet.",
+  "unknownSerial": "Unknown ID",
+  "live": "Live",
+  "secondsAgo": "{seconds} s ago",
+  "@secondsAgo": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "idType": "ID type",
+  "idTypeSerial": "Serial number",
+  "idTypeCaa": "CAA registration",
+  "idTypeUtm": "UTM assigned",
+  "idTypeSession": "Session ID",
+  "uaType": "Aircraft type",
+  "dronePosition": "Drone position",
+  "fromMe": "From me",
+  "height": "Height",
+  "altGeo": "geo.",
+  "speedDirection": "Speed / direction",
+  "operatorPosition": "Operator position",
+  "operatorFromMe": "Operator from me",
+  "operatorId": "Operator ID",
+  "selfId": "Self ID",
+  "transport": "Received via",
+  "rssi": "Signal",
+  "attachToCase": "Attach to case",
+  "attachAgain": "Attached – attach again",
+  "noGpsFix": "No GPS fix yet. Move to open sky and try again.",
+  "observationSent": "Sent to the case.",
+  "observationQueued": "Saved to the outbox; it will be sent when the connection returns.",
+  "observationDuplicate": "The server already has this observation.",
+  "observationRejected": "The server rejected this observation. See the outbox.",
+  "evidenceFor": "Evidence for case {caseNumber}. Files are hashed on capture and uploaded in the background.",
+  "@evidenceFor": {
+    "placeholders": {
+      "caseNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "media": "Photo / video / audio",
+  "photo": "Photo",
+  "video": "Video",
+  "audio": "Rotor audio",
+  "stopAudio": "Stop recording",
+  "remove": "Remove",
+  "captureFailed": "Capture failed.",
+  "micPermission": "Microphone permission is needed to record audio.",
+  "bearing": "Bearing to the drone",
+  "bearingHint": "Optional: switch on, point the back of the phone at the drone and lock the bearing.",
+  "waitingForCompass": "Waiting for compass…",
+  "elevation": "Elevation {degrees}°",
+  "@elevation": {
+    "placeholders": {
+      "degrees": {
+        "type": "int"
+      }
+    }
+  },
+  "compassLowAccuracy": "Compass accuracy is low: move the phone in a figure 8 to calibrate.",
+  "lockBearing": "Lock bearing",
+  "lockedBearing": "Locked: {bearing}, elevation {elevation}°",
+  "@lockedBearing": {
+    "placeholders": {
+      "bearing": {
+        "type": "String"
+      },
+      "elevation": {
+        "type": "int"
+      }
+    }
+  },
+  "note": "Note",
+  "evidenceNoteHint": "What do you see? (drone type, operator, activity)",
+  "submitEvidence": "Submit",
+  "craft": "Craft",
+  "darkVessel": "Dark vessel: no AIS transmitter nearby",
+  "aiAssessment": "AI assessment (advisory)",
+  "loginUsername": "Username",
+  "loginPassword": "Password",
+  "loginWrongCredentials": "Wrong username or password.",
+  "loginLocked": "Too many failed attempts. The account is locked for 15 minutes.",
+  "loginTooMany": "Too many login attempts from this network. Try again later."
+}

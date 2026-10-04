@@ -1,0 +1,44 @@
+{
+  "schema": "uavr.feed.permit/1",
+  "source_id": "caa-permits",
+  "sent_at": "2026-10-02T08:00:00Z",
+  "permits": [
+    {
+      "permit_no": "CAA-P-2026-0456",
+      "serials": [
+        "1581F5FKD229400B"
+      ],
+      "area": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.56,
+              25.03
+            ],
+            [
+              121.57,
+              25.03
+            ],
+            [
+              121.57,
+              25.04
+            ],
+            [
+              121.56,
+              25.04
+            ],
+            [
+              121.56,
+              25.03
+            ]
+          ]
+        ]
+      },
+      "valid_from": "2026-10-01T00:00:00Z",
+      "valid_to": "2026-10-31T23:59:59Z",
+      "max_alt_m": 120,
+      "operator_name": "大明空拍工作室"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+name: uavr_api
+description: Typed client and models for the reporting.tw REST + WebSocket API.
+publish_to: none
+version: 1.0.0
+resolution: workspace
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.41.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.0.0
+  meta: ^1.0.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+

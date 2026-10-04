@@ -1,0 +1,21 @@
+[Unit]
+Description=reporting.tw resumable evidence uploads (tusd)
+After=network.target reporting-api.service
+
+[Service]
+User=reportingtw
+Group=reportingtw
+ExecStart=/sites/reporting.tw/bin/tusd -host 127.0.0.1 -port 8180 -base-path /files/ -behind-proxy \
+  -upload-dir /sites/reporting.tw/data/uploads -max-size 209715200 \
+  -hooks-http http://127.0.0.1:8100/v1/uploads/hooks -hooks-http-retry 3 \
+  -hooks-http-forward-headers Upload-Token -hooks-enabled-events pre-create,post-finish \
+  -cors-allow-headers Upload-Token
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/sites/reporting.tw/data
+
+[Install]
+WantedBy=multi-user.target
