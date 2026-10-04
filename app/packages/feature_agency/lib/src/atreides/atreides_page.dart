@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:uavr_api/uavr_api.dart' hide TimeOfDay;
 import 'package:uavr_core/uavr_core.dart';
@@ -98,18 +99,12 @@ class _AtreidesPageState extends ConsumerState<AtreidesPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _Header(filter: _f, onFilter: _set),
+          const _Header(),
+          _Toolbar(filter: _f, onFilter: _set, summary: summary.value),
+          const Divider(height: 1),
           switch (summary) {
             AsyncData(:final value) when value.detections == 0 => Expanded(child: Center(child: Text(l.atreidesEmpty))),
-            AsyncData(:final value) => Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _SummaryCards(value),
-                  Expanded(child: _body(context, value, tracks)),
-                ],
-              ),
-            ),
+            AsyncData(:final value) => Expanded(child: _body(context, value, tracks)),
             AsyncError(:final error) => Expanded(
               child: ErrorView(error, onRetry: () => ref.invalidate(atreidesSummaryProvider(_f.batchId))),
             ),
@@ -167,158 +162,136 @@ LatLng? _median(List<AtreidesTrack> tracks) {
   return LatLng(lats[lats.length ~/ 2], lons[lons.length ~/ 2]);
 }
 
-class _Header extends ConsumerWidget {
-  const _Header({required this.filter, required this.onFilter});
-  final AtreidesFilter filter;
-  final void Function(AtreidesFilter) onFilter;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l = context.l;
-    final batches = ref.watch(atreidesBatchesProvider).value ?? const <AtreidesBatch>[];
-    const fg = Colors.white;
-    return Container(
-      color: const Color(0xFF141820),
-      padding: const EdgeInsets.fromLTRB(20, 14, 20, 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                'packages/feature_agency/assets/atreides_logo_light.png',
-                height: 56,
-                semanticLabel: 'Atreides',
-                errorBuilder: (_, _, _) => const SizedBox(width: 56),
-              ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l.atreidesTitle,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(color: fg, fontWeight: FontWeight.w700),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(l.atreidesSubtitle, style: const TextStyle(color: Color(0xFFB8C2CC), fontSize: 13)),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Theme(
-            data: ThemeData(brightness: Brightness.dark, colorSchemeSeed: const Color(0xFFEF6C00), useMaterial3: true),
-            child: Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                DropdownButton<int?>(
-                  value: batches.any((b) => b.id == filter.batchId) ? filter.batchId : null,
-                  dropdownColor: const Color(0xFF1E2430),
-                  underline: const SizedBox.shrink(),
-                  items: [
-                    DropdownMenuItem(value: null, child: Text(l.atreidesAllBatches)),
-                    for (final b in batches) DropdownMenuItem(value: b.id, child: Text('#${b.id} · ${b.filename}')),
-                  ],
-                  onChanged: (v) => onFilter((
-                    batchId: v,
-                    role: filter.role,
-                    routesOnly: filter.routesOnly,
-                    highConfidence: filter.highConfidence,
-                  )),
-                ),
-                const SizedBox(width: 8),
-                for (final r in atreidesRoles)
-                  FilterChip(
-                    avatar: CircleAvatar(backgroundColor: atreidesRoleColor(r), radius: 6),
-                    label: Text(atreidesRoleLabel(l, r)),
-                    selected: filter.role == r,
-                    onSelected: (on) => onFilter((
-                      batchId: filter.batchId,
-                      role: on ? r : null,
-                      routesOnly: filter.routesOnly,
-                      highConfidence: filter.highConfidence,
-                    )),
-                  ),
-                FilterChip(
-                  label: Text(l.atreidesRoutesOnly),
-                  selected: filter.routesOnly,
-                  onSelected: (on) => onFilter((
-                    batchId: filter.batchId,
-                    role: filter.role,
-                    routesOnly: on,
-                    highConfidence: filter.highConfidence,
-                  )),
-                ),
-                FilterChip(
-                  label: Text(l.atreidesHighConfidence),
-                  selected: filter.highConfidence,
-                  onSelected: (on) => onFilter((
-                    batchId: filter.batchId,
-                    role: filter.role,
-                    routesOnly: filter.routesOnly,
-                    highConfidence: on,
-                  )),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SummaryCards extends StatelessWidget {
-  const _SummaryCards(this.s);
-  final AtreidesSummary s;
+class _Header extends StatelessWidget {
+  const _Header();
 
   @override
   Widget build(BuildContext context) {
     final l = context.l;
-    final loc = MaterialLocalizations.of(context);
-    String day(DateTime? t) => t == null ? '–' : loc.formatShortDate(t.toLocal());
-    Widget card(String title, String value, {String? sub, Color? dot}) => Card(
-      margin: EdgeInsets.zero,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
+    const fg = Colors.white;
+    return Container(
+      color: const Color(0xFF141820),
+      padding: const EdgeInsets.fromLTRB(20, 14, 20, 14),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            'packages/feature_agency/assets/atreides_logo_light.png',
+            height: 56,
+            semanticLabel: 'Atreides',
+            errorBuilder: (_, _, _) => const SizedBox(width: 56),
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (dot != null) ...[CircleAvatar(backgroundColor: dot, radius: 5), const SizedBox(width: 6)],
-                Text(title, style: Theme.of(context).textTheme.labelMedium),
+                Text(
+                  l.atreidesTitle,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(color: fg, fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 4),
+                Text(l.atreidesSubtitle, style: const TextStyle(color: Color(0xFFB8C2CC), fontSize: 13)),
               ],
             ),
-            Text(value, style: Theme.of(context).textTheme.titleLarge),
-            if (sub != null) Text(sub, style: Theme.of(context).textTheme.bodySmall),
-          ],
-        ),
-      ),
-    );
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Wrap(
-        spacing: 10,
-        runSpacing: 10,
-        children: [
-          card(l.atreidesDetections, '${s.detections}'),
-          card(l.atreidesTracks, '${s.tracks}', sub: l.atreidesTrackSplit(s.routes, s.singleContacts)),
-          for (final r in atreidesRoles)
-            card(atreidesRoleLabel(l, r), '${s.byRole[r] ?? 0}', dot: atreidesRoleColor(r)),
-          card(l.atreidesPeriod, '${day(s.firstAt)} – ${day(s.lastAt)}'),
+          ),
         ],
       ),
     );
   }
 }
+
+/// One row: role (single choice, with counts), routes / confidence toggles, import, and the totals.
+class _Toolbar extends ConsumerWidget {
+  const _Toolbar({required this.filter, required this.onFilter, required this.summary});
+  final AtreidesFilter filter;
+  final void Function(AtreidesFilter) onFilter;
+  final AtreidesSummary? summary;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = context.l;
+    final t = Theme.of(context);
+    final batches = ref.watch(atreidesBatchesProvider).value ?? const <AtreidesBatch>[];
+    final n = NumberFormat.decimalPattern(Localizations.localeOf(context).toLanguageTag());
+    final loc = MaterialLocalizations.of(context);
+    String day(DateTime? d) => d == null ? '–' : loc.formatShortDate(d.toLocal());
+    AtreidesFilter f({Object? batchId = _keep, Object? role = _keep, bool? routesOnly, bool? highConfidence}) => (
+      batchId: identical(batchId, _keep) ? filter.batchId : batchId as int?,
+      role: identical(role, _keep) ? filter.role : role as String?,
+      routesOnly: routesOnly ?? filter.routesOnly,
+      highConfidence: highConfidence ?? filter.highConfidence,
+    );
+    final s = summary;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+      child: Wrap(
+        spacing: 12,
+        runSpacing: 8,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          SegmentedButton<String>(
+            key: const Key('atreides-role'),
+            showSelectedIcon: false,
+            style: const ButtonStyle(visualDensity: VisualDensity.compact),
+            segments: [
+              ButtonSegment(value: '', label: Text(l.atreidesAllRoles)),
+              for (final r in atreidesRoles)
+                ButtonSegment(
+                  value: r,
+                  icon: CircleAvatar(backgroundColor: atreidesRoleColor(r), radius: 5),
+                  label: Text(s == null
+                      ? atreidesRoleLabel(l, r)
+                      : '${atreidesRoleLabel(l, r)} ${n.format(s.byRole[r] ?? 0)}'),
+                ),
+            ],
+            selected: {filter.role ?? ''},
+            onSelectionChanged: (v) => onFilter(f(role: v.first.isEmpty ? null : v.first)),
+          ),
+          FilterChip(
+            label: Text(l.atreidesRoutesOnly),
+            selected: filter.routesOnly,
+            visualDensity: VisualDensity.compact,
+            onSelected: (on) => onFilter(f(routesOnly: on)),
+          ),
+          FilterChip(
+            label: Text(l.atreidesHighConfidence),
+            selected: filter.highConfidence,
+            visualDensity: VisualDensity.compact,
+            onSelected: (on) => onFilter(f(highConfidence: on)),
+          ),
+          if (batches.length > 1)
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 260),
+              child: DropdownButton<int?>(
+                isDense: true,
+                isExpanded: true,
+                value: batches.any((b) => b.id == filter.batchId) ? filter.batchId : null,
+                underline: const SizedBox.shrink(),
+                items: [
+                  DropdownMenuItem(value: null, child: Text(l.atreidesAllBatches)),
+                  for (final b in batches)
+                    DropdownMenuItem(
+                      value: b.id,
+                      child: Text('#${b.id} · ${b.filename}', overflow: TextOverflow.ellipsis),
+                    ),
+                ],
+                onChanged: (v) => onFilter(f(batchId: v)),
+              ),
+            ),
+          if (s != null)
+            Text(
+              '${l.atreidesDetections} ${n.format(s.detections)} · ${l.atreidesTracks} ${n.format(s.tracks)} '
+              '(${l.atreidesTrackSplit(s.routes, s.singleContacts)}) · ${day(s.firstAt)} – ${day(s.lastAt)}',
+              style: t.textTheme.bodySmall?.copyWith(color: t.colorScheme.onSurfaceVariant),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+const _keep = Object();
 
 class _TracksMap extends StatelessWidget {
   const _TracksMap({required this.controller, required this.tracks, required this.selected, this.center});

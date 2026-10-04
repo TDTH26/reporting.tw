@@ -943,6 +943,19 @@ async def video_tracks(
             .limit(100)
         )
     ).scalars()
+    rows = list(rows)
+    # The case each track fed (its observations carry source_id "feed:<feed>:<track>"), if the user may see it.
+    linked = (
+        await session.execute(
+            select(Observation.source_id, Case.id, Case.case_number, Case.severity)
+            .join(Case, Case.incident_id == Observation.incident_id)
+            .where(
+                Observation.source_id.in_([f"feed:{feed_id}:{t.key}" for t in rows]),
+                Case.classification <= p.clearance,
+            )
+        )
+    ).all()
+    case_by_source = {sid: {"id": str(cid), "case_number": no, "severity": sev} for sid, cid, no, sev in linked}
     tracks = []
     for t in rows:
         last_frame = next((pt["frame"] for pt in reversed(t.path) if pt.get("frame")), None)
@@ -958,6 +971,7 @@ async def video_tracks(
                 "path": [{k: v for k, v in pt.items() if k != "frame"} for pt in t.path],
                 "behaviours": t.behaviours,
                 "last_frame_url": files.signed_url(last_frame) if last_frame else None,
+                "case": case_by_source.get(f"feed:{feed_id}:{t.key}"),
             }
         )
     return {

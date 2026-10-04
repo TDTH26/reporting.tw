@@ -2685,6 +2685,12 @@ abstract class AgencyL10n {
   /// **'All imports'**
   String get atreidesAllBatches;
 
+  /// No description provided for @atreidesAllRoles.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get atreidesAllRoles;
+
   /// No description provided for @atreidesDetections.
   ///
   /// In en, this message translates to:
@@ -3260,6 +3266,120 @@ abstract class AgencyL10n {
   /// In en, this message translates to:
   /// **'Only the desk holding this case can decide.'**
   String get recReadOnly;
+
+  /// No description provided for @navCctv.
+  ///
+  /// In en, this message translates to:
+  /// **'CCTV'**
+  String get navCctv;
+
+  /// No description provided for @cctvTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CCTV camera tracks'**
+  String get cctvTitle;
+
+  /// No description provided for @cctvSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Drones and vessels followed across camera frames by AI image analysis (Featherless AI). Advisory only: a person reviews every track.'**
+  String get cctvSubtitle;
+
+  /// No description provided for @cctvCameras.
+  ///
+  /// In en, this message translates to:
+  /// **'Cameras'**
+  String get cctvCameras;
+
+  /// No description provided for @cctvTracks.
+  ///
+  /// In en, this message translates to:
+  /// **'Tracks'**
+  String get cctvTracks;
+
+  /// No description provided for @cctvNoTracks.
+  ///
+  /// In en, this message translates to:
+  /// **'No suspicious activity detected.'**
+  String get cctvNoTracks;
+
+  /// No description provided for @cctvNoCameras.
+  ///
+  /// In en, this message translates to:
+  /// **'No cameras are connected.'**
+  String get cctvNoCameras;
+
+  /// No description provided for @cctvInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get cctvInactive;
+
+  /// No description provided for @cctvLastSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Last frame {time}'**
+  String cctvLastSample(String time);
+
+  /// No description provided for @cctvTrackFacts.
+  ///
+  /// In en, this message translates to:
+  /// **'{hits, plural, =1{1 frame} other{{hits} frames}} · {from} – {to}'**
+  String cctvTrackFacts(int hits, String from, String to);
+
+  /// No description provided for @cctvFrameLegend.
+  ///
+  /// In en, this message translates to:
+  /// **'Last frame: track (orange), detection box and watch area (red)'**
+  String get cctvFrameLegend;
+
+  /// No description provided for @cctvNoFrame.
+  ///
+  /// In en, this message translates to:
+  /// **'No frame stored for this track.'**
+  String get cctvNoFrame;
+
+  /// No description provided for @cctvOpenCase.
+  ///
+  /// In en, this message translates to:
+  /// **'Open case {number}'**
+  String cctvOpenCase(String number);
+
+  /// No description provided for @cctvTrackActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get cctvTrackActive;
+
+  /// No description provided for @cctvTrackLost.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost'**
+  String get cctvTrackLost;
+
+  /// No description provided for @cctvBehLoiter.
+  ///
+  /// In en, this message translates to:
+  /// **'Loitering'**
+  String get cctvBehLoiter;
+
+  /// No description provided for @cctvBehApproaching.
+  ///
+  /// In en, this message translates to:
+  /// **'Approaching'**
+  String get cctvBehApproaching;
+
+  /// No description provided for @cctvBehFast.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast'**
+  String get cctvBehFast;
+
+  /// No description provided for @cctvBehZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch area'**
+  String get cctvBehZone;
 }
 
 class _AgencyL10nDelegate extends LocalizationsDelegate<AgencyL10n> {

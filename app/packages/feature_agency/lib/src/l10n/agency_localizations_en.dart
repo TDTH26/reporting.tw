@@ -1402,6 +1402,9 @@ class AgencyL10nEn extends AgencyL10n {
   String get atreidesAllBatches => 'All imports';
 
   @override
+  String get atreidesAllRoles => 'All';
+
+  @override
   String get atreidesDetections => 'Detections';
 
   @override
@@ -1409,7 +1412,14 @@ class AgencyL10nEn extends AgencyL10n {
 
   @override
   String atreidesTrackSplit(int routes, int singles) {
-    return '$routes routes · $singles single contacts';
+    final intl.NumberFormat routesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String routesString = routesNumberFormat.format(routes);
+    final intl.NumberFormat singlesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String singlesString = singlesNumberFormat.format(singles);
+
+    return '$routesString routes · $singlesString single contacts';
   }
 
   @override
@@ -1716,4 +1726,75 @@ class AgencyL10nEn extends AgencyL10n {
 
   @override
   String get recReadOnly => 'Only the desk holding this case can decide.';
+
+  @override
+  String get navCctv => 'CCTV';
+
+  @override
+  String get cctvTitle => 'CCTV camera tracks';
+
+  @override
+  String get cctvSubtitle =>
+      'Drones and vessels followed across camera frames by AI image analysis (Featherless AI). Advisory only: a person reviews every track.';
+
+  @override
+  String get cctvCameras => 'Cameras';
+
+  @override
+  String get cctvTracks => 'Tracks';
+
+  @override
+  String get cctvNoTracks => 'No suspicious activity detected.';
+
+  @override
+  String get cctvNoCameras => 'No cameras are connected.';
+
+  @override
+  String get cctvInactive => 'Inactive';
+
+  @override
+  String cctvLastSample(String time) {
+    return 'Last frame $time';
+  }
+
+  @override
+  String cctvTrackFacts(int hits, String from, String to) {
+    String _temp0 = intl.Intl.pluralLogic(
+      hits,
+      locale: localeName,
+      other: '$hits frames',
+      one: '1 frame',
+    );
+    return '$_temp0 · $from – $to';
+  }
+
+  @override
+  String get cctvFrameLegend =>
+      'Last frame: track (orange), detection box and watch area (red)';
+
+  @override
+  String get cctvNoFrame => 'No frame stored for this track.';
+
+  @override
+  String cctvOpenCase(String number) {
+    return 'Open case $number';
+  }
+
+  @override
+  String get cctvTrackActive => 'Active';
+
+  @override
+  String get cctvTrackLost => 'Lost';
+
+  @override
+  String get cctvBehLoiter => 'Loitering';
+
+  @override
+  String get cctvBehApproaching => 'Approaching';
+
+  @override
+  String get cctvBehFast => 'Fast';
+
+  @override
+  String get cctvBehZone => 'Watch area';
 }

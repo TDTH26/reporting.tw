@@ -1348,6 +1348,9 @@ class AgencyL10nZh extends AgencyL10n {
   String get atreidesAllBatches => '全部匯入';
 
   @override
+  String get atreidesAllRoles => '全部';
+
+  @override
   String get atreidesDetections => '偵測';
 
   @override
@@ -1355,7 +1358,14 @@ class AgencyL10nZh extends AgencyL10n {
 
   @override
   String atreidesTrackSplit(int routes, int singles) {
-    return '$routes 條航線 · $singles 個單點目標';
+    final intl.NumberFormat routesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String routesString = routesNumberFormat.format(routes);
+    final intl.NumberFormat singlesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String singlesString = singlesNumberFormat.format(singles);
+
+    return '$routesString 條航線 · $singlesString 個單點目標';
   }
 
   @override
@@ -1659,6 +1669,70 @@ class AgencyL10nZh extends AgencyL10n {
 
   @override
   String get recReadOnly => '僅由承辦本案的席位決定。';
+
+  @override
+  String get navCctv => '監視器';
+
+  @override
+  String get cctvTitle => '監視器目標追蹤';
+
+  @override
+  String get cctvSubtitle =>
+      '以 AI 影像分析（Featherless AI）在監視器畫面中持續追蹤的無人機與船隻。僅供參考：每條追蹤都由人員審查。';
+
+  @override
+  String get cctvCameras => '監視器';
+
+  @override
+  String get cctvTracks => '追蹤';
+
+  @override
+  String get cctvNoTracks => '未偵測到可疑活動。';
+
+  @override
+  String get cctvNoCameras => '尚未連接任何監視器。';
+
+  @override
+  String get cctvInactive => '停用';
+
+  @override
+  String cctvLastSample(String time) {
+    return '最後畫面 $time';
+  }
+
+  @override
+  String cctvTrackFacts(int hits, String from, String to) {
+    return '$hits 個畫面 · $from – $to';
+  }
+
+  @override
+  String get cctvFrameLegend => '最後畫面：追蹤路徑（橘色）、偵測框與警戒區（紅色）';
+
+  @override
+  String get cctvNoFrame => '此追蹤沒有儲存的畫面。';
+
+  @override
+  String cctvOpenCase(String number) {
+    return '開啟案件 $number';
+  }
+
+  @override
+  String get cctvTrackActive => '追蹤中';
+
+  @override
+  String get cctvTrackLost => '已失去目標';
+
+  @override
+  String get cctvBehLoiter => '滯留';
+
+  @override
+  String get cctvBehApproaching => '接近中';
+
+  @override
+  String get cctvBehFast => '快速移動';
+
+  @override
+  String get cctvBehZone => '警戒區';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -3005,6 +3079,9 @@ class AgencyL10nZhTw extends AgencyL10nZh {
   String get atreidesAllBatches => '全部匯入';
 
   @override
+  String get atreidesAllRoles => '全部';
+
+  @override
   String get atreidesDetections => '偵測';
 
   @override
@@ -3012,7 +3089,14 @@ class AgencyL10nZhTw extends AgencyL10nZh {
 
   @override
   String atreidesTrackSplit(int routes, int singles) {
-    return '$routes 條航線 · $singles 個單點目標';
+    final intl.NumberFormat routesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String routesString = routesNumberFormat.format(routes);
+    final intl.NumberFormat singlesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String singlesString = singlesNumberFormat.format(singles);
+
+    return '$routesString 條航線 · $singlesString 個單點目標';
   }
 
   @override
@@ -3316,4 +3400,68 @@ class AgencyL10nZhTw extends AgencyL10nZh {
 
   @override
   String get recReadOnly => '僅由承辦本案的席位決定。';
+
+  @override
+  String get navCctv => '監視器';
+
+  @override
+  String get cctvTitle => '監視器目標追蹤';
+
+  @override
+  String get cctvSubtitle =>
+      '以 AI 影像分析（Featherless AI）在監視器畫面中持續追蹤的無人機與船隻。僅供參考：每條追蹤都由人員審查。';
+
+  @override
+  String get cctvCameras => '監視器';
+
+  @override
+  String get cctvTracks => '追蹤';
+
+  @override
+  String get cctvNoTracks => '未偵測到可疑活動。';
+
+  @override
+  String get cctvNoCameras => '尚未連接任何監視器。';
+
+  @override
+  String get cctvInactive => '停用';
+
+  @override
+  String cctvLastSample(String time) {
+    return '最後畫面 $time';
+  }
+
+  @override
+  String cctvTrackFacts(int hits, String from, String to) {
+    return '$hits 個畫面 · $from – $to';
+  }
+
+  @override
+  String get cctvFrameLegend => '最後畫面：追蹤路徑（橘色）、偵測框與警戒區（紅色）';
+
+  @override
+  String get cctvNoFrame => '此追蹤沒有儲存的畫面。';
+
+  @override
+  String cctvOpenCase(String number) {
+    return '開啟案件 $number';
+  }
+
+  @override
+  String get cctvTrackActive => '追蹤中';
+
+  @override
+  String get cctvTrackLost => '已失去目標';
+
+  @override
+  String get cctvBehLoiter => '滯留';
+
+  @override
+  String get cctvBehApproaching => '接近中';
+
+  @override
+  String get cctvBehFast => '快速移動';
+
+  @override
+  String get cctvBehZone => '警戒區';
 }

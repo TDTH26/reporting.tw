@@ -103,6 +103,7 @@ async def test_replayed_frames_build_one_track_with_behaviours(client, desks, st
     codes = {b["code"] for b in t["behaviours"]}
     assert {"approaching", "zone"} <= codes
     assert t["last_frame_url"] and "/v1/media/frames/CAM-PIER/" in t["last_frame_url"]
+    assert t["case"] and t["case"]["case_number"].startswith("UAV-")  # the case this track fed
 
     async with sessionmaker()() as s:
         obs = (await s.execute(select(Observation).order_by(Observation.observed_at))).scalars().all()

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:uavr_api/uavr_api.dart';
 import 'package:uavr_core/uavr_core.dart';
 
+import 'cctv/cctv_page.dart';
 import 'admin/admin_page.dart';
 import 'atreides/atreides_page.dart';
 import 'audit/audit_page.dart';
@@ -27,6 +28,7 @@ String defaultRoute(Me me) {
 bool? allowed(Me me, String path) {
   if (path.startsWith('/queue') || path.startsWith('/cases') || path.startsWith('/map')) return canReadCases(me);
   if (path.startsWith('/dashboards')) return canSeeDashboards(me);
+  if (path.startsWith('/cctv')) return canSeeCctv(me);
   if (path.startsWith('/admin')) return canSeeAdmin(me);
   if (path.startsWith('/audit')) return canSeeAudit(me);
   return null;
@@ -62,6 +64,7 @@ GoRouter buildRouter(WidgetRef ref, {String initialLocation = '/'}) {
           GoRoute(path: '/maritime', pageBuilder: (_, _) => const NoTransitionPage(child: MaritimePage())),
           GoRoute(path: '/atreides', pageBuilder: (_, _) => const NoTransitionPage(child: AtreidesPage())),
           GoRoute(path: '/dashboards', pageBuilder: (_, _) => const NoTransitionPage(child: DashboardsPage())),
+          GoRoute(path: '/cctv', pageBuilder: (_, _) => const NoTransitionPage(child: CctvPage())),
           GoRoute(path: '/admin', pageBuilder: (_, _) => const NoTransitionPage(child: AdminPage())),
           GoRoute(path: '/audit', pageBuilder: (_, _) => const NoTransitionPage(child: AuditPage())),
         ],

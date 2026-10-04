@@ -326,6 +326,10 @@ class UavrApi {
   Future<List<VideoFeedInfo>> videoFeeds() async =>
       listOf(await _get('/v1/agency/video-feeds'), VideoFeedInfo.fromJson);
 
+  /// Tracks of one camera over the last [hours] (backend maximum 14 days).
+  Future<VideoFeedTracks> videoFeedTracks(String feedId, {double hours = 24 * 14}) async =>
+      VideoFeedTracks.fromJson(await _get('/v1/agency/video-feeds/$feedId/tracks', query: {'hours': hours}) as Json);
+
   Future<({String? streamUrl, String? snapshotUrl})> videoFeedStream(String feedId, {String? caseId}) async {
     final j = await _get('/v1/agency/video-feeds/$feedId/stream', query: {'case_id': caseId}) as Json;
     return (streamUrl: j['stream_url'] as String?, snapshotUrl: j['snapshot_url'] as String?);

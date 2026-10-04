@@ -84,7 +84,9 @@ and routed to agency desks. Internal code names stay `uavr`.
   → persistent per-camera tracks (`video_track`), behaviours loiter/approaching/fast/watch area (`video_feed.alert_zone`),
   observations `feed:<id>:<track>` with bearing from the box centre; frames of one camera are processed in order.
   API: PUT /v1/admin/video-feeds/{id}, POST .../frames (admin), GET /v1/agency/video-feeds/{id}/tracks.
-  Replay a video: `tools/video_replay.py` (ffmpeg locally). Demo: DEMO-CAM-HSZ → case UAV-261003-000006 (Critical, MND).
+  Replay a video: `tools/video_replay.py` (ffmpeg locally). Console `/cctv` (above Admin): cameras "Name (ID)", tracks, last frame with box/trail/watch area, linked case.
+  Demo cameras: Yilan Coast (0AXD) with track 0AXD-T3 → case UAV-261003-000010; 8 more (1VD1, 2KX9, 3TQ7, 4PM8, 5RS2,
+  6ZY3, 7HL4, 9KM5) without an image source, so no tracks.
 - Android: version 1.0.1, build numbers 1-7 used (7 = 1.0.1; 5 = adaptive icon + localized launcher names in src/<flavor>/res/values-*/strings.xml,
   6 = German wording fix; APKs in dist/); icons from `tools/make_icon.py`.
   Homepage offers the APK directly (`web/site/download/reporting-informant-<ver>.apk`, git-ignored, rsync by hand;

@@ -616,6 +616,76 @@ class VideoFeedInfo {
   );
 }
 
+/// One craft followed across a camera's frames (image coordinates 0..1).
+class VideoTrackInfo {
+  VideoTrackInfo({
+    required this.key,
+    required this.status,
+    required this.hits,
+    required this.path,
+    required this.behaviours,
+    this.craftDomain,
+    this.craftType,
+    this.firstAt,
+    this.lastAt,
+    this.lastFrameUrl,
+    this.caseId,
+    this.caseNumber,
+    this.caseSeverity,
+  });
+  final String key, status;
+  final String? craftDomain, craftType, lastFrameUrl, caseId, caseNumber;
+  final int hits;
+  final int? caseSeverity;
+  final DateTime? firstAt, lastAt;
+  final List<({DateTime? t, double x, double y, List<double>? box})> path;
+  final List<({String code, String text})> behaviours;
+
+  factory VideoTrackInfo.fromJson(Json j) {
+    final c = j['case'] as Json?;
+    return VideoTrackInfo(
+      key: '${j['key']}',
+      status: '${j['status']}',
+      craftDomain: j['craft_domain'] as String?,
+      craftType: j['craft_type'] as String?,
+      firstAt: parseDate(j['first_at']),
+      lastAt: parseDate(j['last_at']),
+      hits: (j['hits'] as num?)?.toInt() ?? 0,
+      path: [
+        for (final p in (j['path'] as List? ?? const []).cast<Json>())
+          (
+            t: parseDate(p['t']),
+            x: toDouble(p['x']) ?? 0,
+            y: toDouble(p['y']) ?? 0,
+            box: p['box'] is List ? [for (final v in p['box'] as List) (v as num).toDouble()] : null,
+          ),
+      ],
+      behaviours: [
+        for (final b in (j['behaviours'] as List? ?? const []).cast<Json>()) (code: '${b['code']}', text: '${b['text']}'),
+      ],
+      lastFrameUrl: j['last_frame_url'] as String?,
+      caseId: c?['id'] as String?,
+      caseNumber: c?['case_number'] as String?,
+      caseSeverity: (c?['severity'] as num?)?.toInt(),
+    );
+  }
+}
+
+/// A camera's tracks plus its watch area (polygon in image coordinates).
+class VideoFeedTracks {
+  VideoFeedTracks({required this.alertZone, required this.tracks});
+  final List<({double x, double y})> alertZone;
+  final List<VideoTrackInfo> tracks;
+
+  factory VideoFeedTracks.fromJson(Json j) => VideoFeedTracks(
+    alertZone: [
+      for (final p in ((j['feed'] as Json?)?['alert_zone'] as List? ?? const []))
+        (x: (p[0] as num).toDouble(), y: (p[1] as num).toDouble()),
+    ],
+    tracks: listOf(j['tracks'], VideoTrackInfo.fromJson),
+  );
+}
+
 class LiveMap {
   LiveMap({required this.cases, required this.aircraft, required this.fieldOfficers, this.vessels = const []});
   final List<CaseSummary> cases;

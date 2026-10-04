@@ -85,12 +85,13 @@ void main() {
     await settle(tester, 20);
 
     expect(find.text('Atreides maritime sensor'), findsOneWidget);
-    expect(find.text('1 routes · 1 single contacts'), findsOneWidget);
+    expect(find.textContaining('Detections 3 · Tracks 2 (1 routes · 1 single contacts)'), findsOneWidget);
+    expect(find.text('Fixed site 1'), findsOneWidget); // role filter shows the count
     expect(find.text('Mobile asset · 2 detections · 12.0 km'), findsOneWidget);
     expect(find.textContaining('stays within 0.13 km'), findsOneWidget);
     expect(find.text('Showing 2 of 2'), findsOneWidget);
 
-    await tester.tap(find.widgetWithText(FilterChip, 'Fixed site'));
+    await tester.tap(find.text('Fixed site 1'));
     await settle(tester, 20);
     expect(find.text('Showing 1 of 1'), findsOneWidget);
     expect(

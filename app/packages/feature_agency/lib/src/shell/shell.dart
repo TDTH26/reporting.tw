@@ -10,10 +10,11 @@ import 'alert_banner.dart';
 import 'shell_controls.dart';
 
 class _Dest {
-  const _Dest(this.path, this.icon, this.label);
+  const _Dest(this.path, this.icon, this.label, {this.gapAbove = false});
   final String path;
   final IconData icon;
   final String label;
+  final bool gapAbove;
 }
 
 /// NavigationRail + top bar + live alert banner around every console page.
@@ -34,7 +35,9 @@ class ConsoleShell extends ConsumerWidget {
       if (canSeeMaritime(me)) _Dest('/maritime', Icons.sailing, l.navMaritime),
       if (canSeeAtreides(me)) _Dest('/atreides', Icons.radar, l.navAtreides),
       if (canSeeDashboards(me)) _Dest('/dashboards', Icons.insights_outlined, l.navDashboards),
-      if (canSeeAdmin(me)) _Dest('/admin', Icons.admin_panel_settings_outlined, l.navAdmin),
+      if (canSeeCctv(me)) _Dest('/cctv', Icons.videocam_outlined, l.navCctv),
+      // A gap separates the administration pages from the operational ones.
+      if (canSeeAdmin(me)) _Dest('/admin', Icons.admin_panel_settings_outlined, l.navAdmin, gapAbove: true),
       if (canSeeAudit(me)) _Dest('/audit', Icons.receipt_long_outlined, l.navAudit),
     ];
     final path = location.startsWith('/cases') ? '/queue' : location;
@@ -52,7 +55,12 @@ class ConsoleShell extends ConsumerWidget {
           ),
           onDestinationSelected: (i) => context.go(dests[i].path),
           destinations: [
-            for (final d in dests) NavigationRailDestination(icon: Icon(d.icon), label: Text(d.label)),
+            for (final d in dests)
+              NavigationRailDestination(
+                icon: Icon(d.icon),
+                label: Text(d.label),
+                padding: d.gapAbove ? const EdgeInsets.only(top: 28) : null,
+              ),
           ],
         ),
         const VerticalDivider(width: 1),

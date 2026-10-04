@@ -13,7 +13,7 @@ import math
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 
-from sqlalchemy import func, select
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..db.models import VideoFeed, VideoTrack
@@ -147,7 +147,9 @@ async def update_tracks(
             t.status = "lost"
         else:
             live.append(t)
-    n = (await session.execute(select(func.count()).where(VideoTrack.feed_id == feed.id))).scalar_one()
+    # Next number after the highest one used (a count would reuse a key once a track was deleted).
+    keys = (await session.execute(select(VideoTrack.key).where(VideoTrack.feed_id == feed.id))).scalars()
+    n = max((int(k.rsplit("-T", 1)[1]) for k in keys if k.rsplit("-T", 1)[-1].isdigit()), default=0)
     out = []
     for d, t in associate(live, dets):
         cx, cy = d.centre

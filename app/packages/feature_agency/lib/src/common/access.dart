@@ -11,6 +11,9 @@ bool canSeeDashboards(Me me) => me.has('analyst') || me.has('supervisor') || me.
 
 bool canSeeAdmin(Me me) => me.has('admin');
 
+/// CCTV camera tracks (backend READERS on /v1/agency/video-feeds).
+bool canSeeCctv(Me me) => canReadCases(me);
+
 bool canSeeAudit(Me me) => me.has('admin') || me.has('supervisor');
 
 /// Dispatch roles (backend DISPATCH): may add notes on cases they fully see.
